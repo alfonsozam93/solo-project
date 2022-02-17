@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
@@ -28,9 +28,12 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan('combined'));
 
+//api URL
+const apiURL = 'http://api.airvisual.com/v2/nearest_city?key=d7a4658b-a141-4a63-9e2c-5b3bf352ca12'
+
 // defining an array to work as the database (temporary solution)
 const ads = [
-  {title: 'Hello, world (again)!'}
+  {title: 'hello world'}
 ];
 
 // Home route
@@ -46,7 +49,7 @@ app.get('/', (req, res) => {
 /**
  * define route handlers
  */
-//  app.use('/api', apiRouter);
+ app.use('/api', apiRouter);
 
 //global error catcher
 
